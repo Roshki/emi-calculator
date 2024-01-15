@@ -1,4 +1,4 @@
-package ItTests;
+package IT;
 import com.emicalculatorbackend.emicalculator.model.EmiDataResponse;
 import lombok.val;
 import org.junit.jupiter.api.Assertions;
@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.*;
 
 @ExtendWith(SpringExtension.class)
 
-public class ItTest {
+public class ITEmiCalculator {
 
     String bodyCorrect =
             """
