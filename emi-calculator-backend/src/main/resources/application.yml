@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:dbo
+    username: admin
+    password: admin
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    defer-datasource-initialization: false
+    generate-ddl: false
+  h2:
+    console.enabled: true
