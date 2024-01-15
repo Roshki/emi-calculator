@@ -1,0 +1,43 @@
+
+<main class="main">
+  <div class="content">
+   <form [formGroup]="calculatorForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label for="loanValue">Loan value:</label>
+    <input type="number" class="grid-container" type="text" id="loanValue" formControlName="loanValue" (ngModelChange)="onTouched()" required>
+  </div>
+
+  <div>
+    <label for="yearlyInterestRate">Yearly interest rate:</label>
+    <input type="number" class="grid-container" type="text" id="yearlyInterestRate" formControlName="yearlyInterestRate" (ngModelChange)="onTouched()"  required>
+  </div>
+
+  <div>
+    <label for="loanTermInYears">Loan term:</label>
+    <input type="number" class="grid-container" type="text" id="loanTermInYears" formControlName="loanTermInYears" (ngModelChange)="onTouched()" required>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input class="grid-container" type="email" id="email" formControlName="email" (ngModelChange)="onTouched()" required>
+  </div>
+  <div class="error" *ngIf="calculatorForm.get('email')?.touched || calculatorForm.get('loanValue')?.touched || calculatorForm.get('yearlyInterestRate')?.touched || calculatorForm.get('loanTermInYears')?.touched">
+      <p *ngIf="calculatorForm.get('email')?.errors?.['required']">Email is required</p>
+      <p *ngIf="calculatorForm.get('email')?.errors?.['email']">Not a valid Email</p>
+      <p *ngIf="calculatorForm.get('loanValue')?.errors">Not a valid loan value (Must be a positive number, decimals are allowed with .)</p>
+      <p *ngIf="calculatorForm.get('yearlyInterestRate')?.errors">Not a valid yearly interest rate (Must be a positive number between zero and hundred, decimals are allowed with .)</p>
+      <p *ngIf="calculatorForm.get('loanTermInYears')?.errors">Not a valid loan terms in years (Positive Number between zero and thirty, decimals are NOT allowed)</p>
+    </div>
+  <button class="button" [disabled]="calculatorForm.invalid"  type="submit">Submit</button>
+
+  <div *ngIf="submitMessage">
+    <p>{{response.message}}</p>
+    <p>{{response.result}}</p>
+</div>
+
+</form>
+  </div>
+</main>
+
+<router-outlet></router-outlet>
